@@ -1,0 +1,305 @@
+/* General Styles */
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #000000; /* Black background */
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    text-align: center;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+	transition: font-size 0.3s ease; /* Transition for font size change */
+}
+
+/* Hover effect for navigation links */
+nav a:hover {
+    font-size: 1.7em; /* Increase font size on hover */
+}
+
+
+
+/* Main Content Area */
+#content {
+    padding-top: 60px; /* To prevent overlap with nav */
+    position: relative;
+    z-index: 1;
+}
+
+/* Particle Bands */
+#particles-js,
+#particles-js-middle {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+/* Bottom Particle Band */
+#particles-js {
+    height: 50vh; /* Bottom half */
+    bottom: 0;
+}
+
+/* Middle Particle Band */
+#particles-js-middle {
+    height: 20vh; /* 20% height */
+    bottom: 50vh; /* Align just above the bottom band */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Home Page Styles */
+#home-container {
+    position: relative;
+    width: 100%;
+    /*padding-top: 60px;*/
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    min-height: calc(100vh - 300px); /* Full viewport height minus nav bar */
+}
+
+#hero-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+}
+
+#profile-picture {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+#profile-picture img {
+    width: 100%;
+    max-width: 385px;
+    border-radius: 15px; /* Rounded rectangle */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#profile-picture img:hover {
+    transform: scale(1.02); /* Slightly enlarge the image */
+    filter: brightness(1.05); /* Increase brightness by 5% */
+}
+
+#about-me-box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.8); /* Semi-transparent grey */
+    color: #ffffff;
+    text-align: center; /* Center-align text */
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#about-me-box:hover {
+    background: rgba(128, 128, 128, 1); /* Fully opaque grey */
+    transform: scale(1.02); /* Slightly enlarge the box */
+}
+
+#about-me-box h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+#about-me-box h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#about-me-text {
+    margin-left: 0; /* Remove left margin */
+}
+
+#about-me-text p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#about-me-text strong {
+    font-weight: bold;
+}
+
+/* Social Icons Styles */
+#social-icons {
+    margin-top: 0px; /* Adjust this value to move the icons 50px below the grey box */
+    text-align: center;
+}
+
+#social-icons a {
+    margin: 0 15px; /* Space between icons */
+}
+
+#social-icons img {
+    width: 40px; /* Size of the icons */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+#social-icons img:hover {
+    transform: scale(1.5); /* Slightly enlarge icons on hover */
+}
+
+
+/* Make all hyperlinks yellow */
+a {
+    color: #ffff66; /* Yellow color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    #hero-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #profile-picture {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    #about-me-box {
+        width: 100%;
+    }
+
+    #about-me-box h1,
+    #about-me-box h2 {
+        text-align: center;
+    }
+
+    #about-me-text p {
+        text-align: center;
+    }
+
+    /* Adjust hover effects for touch devices */
+    #about-me-box:hover {
+        transform: none;
+    }
+}
+
+
+
+
+
+/* Contact Page Styles */
+#contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 400px); /* Adjust for full viewport height minus nav */
+    padding-top: 60px; /* Prevent overlap with nav */
+}
+
+#contact-form-box {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.8); /* Semi-transparent grey */
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#contact-form-box:hover {
+    background: rgba(128, 128, 128, 1); /* Fully opaque grey */
+    transform: scale(1.02); /* Slightly enlarge the box */
+}
+
+#contact-form-box h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between form fields */
+}
+
+.field {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.field label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+.field textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Button Styles */
+#button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#button:hover {
+    background-color: #555;
+}
+
+#contact-form-box h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-decoration: underline; /* This adds the underline */
+}
