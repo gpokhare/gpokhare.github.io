@@ -115,7 +115,7 @@ nav a:hover {
 
 #profile-picture img {
     width: 100%;
-    max-width: 385px;
+    max-width: 430px;
     border-radius: 15px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
