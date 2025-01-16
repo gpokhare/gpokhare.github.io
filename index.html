@@ -15,7 +15,7 @@
 
     <!-- Main content area where pages will load -->
     <div id="content">
-        <!-- Content will be loaded here -->
+        <!-- Content will be dynamically loaded here -->
     </div>
 
     <!-- Social icons that appear on every page -->
@@ -33,6 +33,7 @@
 
     <div id="particles-js"></div>
     <div id="particles-js-middle"></div>
+    <div id="particle-overlay"></div>
 
     <!-- Include particles.js and backgroundParticles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -41,28 +42,43 @@
     <script>
         // Function to load content into the #content div based on the URL hash
         function loadContentFromHash() {
-            var page = window.location.hash.substr(1);
+            var page = window.location.hash.substr(1); // Extract the hash without the '#'
             if (!page) {
-                page = 'home';
+                page = 'home'; // Default to 'home' if no hash is provided
             }
-            loadContent(page + '.html');
+            fadeOutAndLoad(page + '.html');
         }
 
-        // Function to load content via fetch API
-        function loadContent(page) {
-            fetch(page)
-                .then(response => {
-                    if (response.ok) {
-                        return response.text();
-                    } else {
-                        console.error('Error loading content:', response.statusText);
-                        return Promise.reject(response.statusText);
-                    }
-                })
-                .then(data => {
-                    document.getElementById('content').innerHTML = data;
-                })
-                .catch(error => console.error('Fetch error:', error));
+        // Function to load content via fetch API with fade effect
+        function fadeOutAndLoad(page) {
+            const contentDiv = document.getElementById('content');
+
+            // Apply fade-out effect
+            contentDiv.classList.add('fade-out');
+
+            setTimeout(() => {
+                // Fetch the new page content after fade-out completes
+                fetch(page)
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            return Promise.reject('404'); // Return 404 error if the page is not found
+                        }
+                    })
+                    .then(data => {
+                        contentDiv.innerHTML = data;
+                        contentDiv.classList.remove('fade-out'); // Remove fade-out class
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        contentDiv.innerHTML = `
+                            <h1>Page Not Found</h1>
+                            <p>The page you are looking for does not exist. Please check the URL or go back to <a href="#home">Home</a>.</p>
+                        `;
+                        contentDiv.classList.remove('fade-out');
+                    });
+            }, 500); // Wait for fade-out duration (0.5s)
         }
 
         // Load content on initial page load

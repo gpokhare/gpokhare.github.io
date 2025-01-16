@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     margin: 0;
-    overflow: hidden;
+    overflow-y: auto; /* Enable vertical scrolling */
     background: #000000; /* Black background */
     color: white;
     font-family: Arial, sans-serif;
@@ -22,16 +22,13 @@ nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
-    font-size: 1.2em;
-	transition: font-size 0.3s ease; /* Transition for font size change */
+    font-size: 2em;
+    transition: font-size 0.3s ease;
 }
 
-/* Hover effect for navigation links */
 nav a:hover {
-    font-size: 1.7em; /* Increase font size on hover */
+    font-size: 2.5em;
 }
-
-
 
 /* Main Content Area */
 #content {
@@ -41,55 +38,74 @@ nav a:hover {
 }
 
 /* Particle Bands */
-#particles-js,
+/* #particles-js,
 #particles-js-middle {
     position: absolute;
     width: 100%;
     z-index: -1;
 }
 
-/* Bottom Particle Band */
 #particles-js {
-    height: 50vh; /* Bottom half */
+    height: 50vh; 
     bottom: 0;
 }
 
-/* Middle Particle Band */
 #particles-js-middle {
-    height: 20vh; /* 20% height */
+    height: 20vh; 
+    bottom: 50vh; 
+} */
+
+/* Particle Bands */
+#particles-js,
+#particles-js-middle,
+#particle-overlay {
+    position: fixed; /* Keep the background elements fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /* Ensure they stay in the background */
+}
+
+/* #particles-js {
+    height: 50vh; 
+    bottom: 0;
+} */
+
+#particles-js-middle {
+    height: 20vh; /* Middle section */
     bottom: 50vh; /* Align just above the bottom band */
 }
 
-
-
-
-
-
-
-
-
+#particle-overlay {
+    height: 100vh; /* Full screen height */
+    background: transparent; /* Keep it transparent or customize */
+}
 
 
 /* Home Page Styles */
 #home-container {
     position: relative;
     width: 100%;
-    /*padding-top: 60px;*/
     display: flex;
-    flex-direction: column; /* Stack content vertically */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #ffffff;
     min-height: calc(100vh - 300px); /* Full viewport height minus nav bar */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #hero-section {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
-    max-width: 1000px;
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 #profile-picture {
@@ -100,29 +116,32 @@ nav a:hover {
 #profile-picture img {
     width: 100%;
     max-width: 385px;
-    border-radius: 15px; /* Rounded rectangle */
+    border-radius: 15px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 #profile-picture img:hover {
-    transform: scale(1.02); /* Slightly enlarge the image */
-    filter: brightness(1.05); /* Increase brightness by 5% */
+    transform: scale(1.02);
+    filter: brightness(1.05);
 }
 
 #about-me-box {
     flex: 1;
     padding: 20px;
     border-radius: 15px;
-    background: rgba(128, 128, 128, 0.8); /* Semi-transparent grey */
+    background: rgba(128, 128, 128, 0.8);
     color: #ffffff;
-    text-align: center; /* Center-align text */
+    text-align: center;
     position: relative;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
 }
 
 #about-me-box:hover {
-    background: rgba(128, 128, 128, 1); /* Fully opaque grey */
-    transform: scale(1.02); /* Slightly enlarge the box */
+    background: rgba(128, 128, 128, 1);
+    transform: scale(1.02);
 }
 
 #about-me-box h1 {
@@ -137,7 +156,7 @@ nav a:hover {
 }
 
 #about-me-text {
-    margin-left: 0; /* Remove left margin */
+    margin-left: 0;
 }
 
 #about-me-text p {
@@ -152,33 +171,119 @@ nav a:hover {
 
 /* Social Icons Styles */
 #social-icons {
-    margin-top: 0px; /* Adjust this value to move the icons 50px below the grey box */
+    margin-top: 20px;
     text-align: center;
 }
 
 #social-icons a {
-    margin: 0 15px; /* Space between icons */
+    margin: 0 15px;
 }
 
 #social-icons img {
-    width: 40px; /* Size of the icons */
-    height: auto; /* Maintain aspect ratio */
+    width: 40px;
+    height: auto;
     transition: transform 0.3s ease;
 }
 
 #social-icons img:hover {
-    transform: scale(1.5); /* Slightly enlarge icons on hover */
+    transform: scale(1.5);
 }
-
 
 /* Make all hyperlinks yellow */
 a {
-    color: #ffff66; /* Yellow color */
+    color: #ffff66;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Contact Page Styles */
+#contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 400px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#contact-form-box {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.8);
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#contact-form-box:hover {
+    background: rgba(128, 128, 128, 1);
+    transform: scale(1.02);
+}
+
+#contact-form-box h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.field {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.field label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+/* Button Styles */
+#button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#button:hover {
+    background-color: #555;
 }
 
 /* Responsive Design */
@@ -212,94 +317,128 @@ a:hover {
     }
 }
 
+@media screen and (max-width: 480px) {
+    nav a {
+        font-size: 1em;
+    }
 
+    #social-icons img {
+        width: 30px;
+    }
 
-
-
-/* Contact Page Styles */
-#contact-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: calc(100vh - 400px); /* Adjust for full viewport height minus nav */
-    padding-top: 60px; /* Prevent overlap with nav */
+    #profile-picture img {
+        max-width: 100px;
+    }
 }
 
-#contact-form-box {
-    width: 80%;
-    max-width: 600px;
+/* Projects Page Styles */
+#projects-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+    text-align: center;
+}
+
+.project-box {
+    width: 60%; /* Fixed consistent width */
+    padding: 20px;
+    margin: 20px auto; /* Center-align the boxes */
     border-radius: 15px;
     background: rgba(128, 128, 128, 0.8); /* Semi-transparent grey */
     color: #ffffff;
-    text-align: center;
-    position: relative;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-#contact-form-box:hover {
-    background: rgba(128, 128, 128, 1); /* Fully opaque grey */
-    transform: scale(1.02); /* Slightly enlarge the box */
+.project-box:hover {
+    background: rgba(128, 128, 128, 1);
+    transform: scale(1.02);
 }
 
-#contact-form-box h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+.project-box h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center; /* Center-align the title */
 }
 
-/* Form Styles */
-form {
+.project-box p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: justify; 
+}
+
+.project-box a {
+    color: #ffff66;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-box a:hover {
+    text-decoration: underline;
+}
+
+
+/* Year separator style */
+.year-separator {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 20px; /* Space between form fields */
+    justify-content: center;
+    margin: 40px auto;
+    width: 70%; /* Slightly wider than the project boxes */
+    position: relative;
 }
 
-.field {
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+.year-separator::before,
+.year-separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ffffff;
+    opacity: 0.5;
 }
 
-.field label {
-    font-size: 1.2em;
-    margin-bottom: 5px;
+.year-separator span {
+    margin: 0 15px;
+    font-size: 1.5em;
+    color: #ffff66; /* Yellow color */
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.8); /* Background for break effect */
+    padding: 0 10px;
+    border-radius: 10px;
 }
 
-.field input,
-.field textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
+
+
+/* Transition effect for page content */
+#content {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.field textarea {
-    resize: vertical; /* Allow vertical resizing only */
+#content.fade-out {
+    opacity: 0;
 }
 
-/* Button Styles */
-#button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
+
+/* Project Icons Container */
+.project-icons {
+    margin-top: 20px; /* Add spacing above the icons */
+    text-align: center; /* Center-align icons */
+}
+
+/* Project-specific icon styles */
+.project-icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px; /* Add spacing between icons */
+    vertical-align: middle;
+    transition: transform 0.3s ease;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#button:hover {
-    background-color: #555;
-}
-
-#contact-form-box h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-decoration: underline; /* This adds the underline */
+.project-icon:hover {
+    transform: scale(1.2); /* Slightly enlarge on hover */
 }
