@@ -442,3 +442,139 @@ form {
 .project-icon:hover {
     transform: scale(1.2); /* Slightly enlarge on hover */
 }
+
+
+
+/*******Presentation CSS *******************/
+/* Presentation Container */
+#presentation-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Title */
+#presentation-title {
+    color: #ffff66; /* Yellow consistent with links */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Slide Wrapper */
+#slide-wrapper {
+    position: relative;
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgba(128, 128, 128, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+/* Slideshow */
+#slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent slides from spilling outside the container */
+    display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Center slides horizontally */
+    align-items: center; /* Center slides vertically */
+}
+
+
+/* Slide Active State */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(0.9); /* Slightly shrink non-active slides */
+    z-index: 0;
+    display: flex; /* Center slide content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.slide.active {
+    opacity: 1; /* Make visible */
+    transform: scale(1); /* Normal size */
+    z-index: 1;
+}
+
+.slide img {
+    width: 100%; /* Scale image to fit the slide */
+    height: 100%;
+    object-fit: contain; /* Ensure the entire image fits without cropping */
+    border-radius: 15px; /* Rounded corners for slides */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease; /* Smooth scaling on hover or interaction */
+}
+
+.slide img:hover {
+    transform: scale(1.02); /* Slight zoom-in effect on hover */
+}
+
+/* Navigation Buttons */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Ensure the button is always centered */
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: #ffff66; /* Yellow consistent with links */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect for Buttons */
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.6); /* Light background on hover */
+    transform: translate(-50%, -50%) scale(1.2); /* Scale without shifting position */
+}
+
+/* Specific Placement */
+#prev-slide {
+    left: 10px; /* Keep it fixed to the left */
+}
+
+#next-slide {
+    right: 10px; /* Keep it fixed to the right */
+}
+
+
+
+/* Pagination Dots */
+#pagination {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#pagination .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: background 0.3s;
+}
+
+#pagination .dot.active {
+    background: #ffff66;
+}

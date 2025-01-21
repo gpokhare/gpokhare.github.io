@@ -11,6 +11,7 @@
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+        <a href="#presentation">Presentation</a>
     </nav>
 
     <!-- Main content area where pages will load -->
@@ -35,61 +36,9 @@
     <div id="particles-js-middle"></div>
     <div id="particle-overlay"></div>
 
-    <!-- Include particles.js and backgroundParticles.js -->
+    <!-- Include particles.js and other scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="backgroundParticles.js"></script>
-
-    <script>
-        // Function to load content into the #content div based on the URL hash
-        function loadContentFromHash() {
-            var page = window.location.hash.substr(1); // Extract the hash without the '#'
-            if (!page) {
-                page = 'home'; // Default to 'home' if no hash is provided
-            }
-            fadeOutAndLoad(page + '.html');
-        }
-
-        // Function to load content via fetch API with fade effect
-        function fadeOutAndLoad(page) {
-            const contentDiv = document.getElementById('content');
-
-            // Apply fade-out effect
-            contentDiv.classList.add('fade-out');
-
-            setTimeout(() => {
-                // Fetch the new page content after fade-out completes
-                fetch(page)
-                    .then(response => {
-                        if (response.ok) {
-                            return response.text();
-                        } else {
-                            return Promise.reject('404'); // Return 404 error if the page is not found
-                        }
-                    })
-                    .then(data => {
-                        contentDiv.innerHTML = data;
-                        contentDiv.classList.remove('fade-out'); // Remove fade-out class
-                    })
-                    .catch(error => {
-                        console.error('Fetch error:', error);
-                        contentDiv.innerHTML = `
-                            <h1>Page Not Found</h1>
-                            <p>The page you are looking for does not exist. Please check the URL or go back to <a href="#home">Home</a>.</p>
-                        `;
-                        contentDiv.classList.remove('fade-out');
-                    });
-            }, 500); // Wait for fade-out duration (0.5s)
-        }
-
-        // Load content on initial page load
-        window.onload = function() {
-            loadContentFromHash();
-        };
-
-        // Load content when the hash changes
-        window.onhashchange = function() {
-            loadContentFromHash();
-        };
-    </script>
+    <script src="script.js"></script> <!-- Link to the external script file -->
 </body>
 </html>
